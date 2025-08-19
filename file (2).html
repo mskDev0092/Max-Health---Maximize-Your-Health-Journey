@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Health - Maximize Your Health Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #10b981;
+            --secondary-color: #3b82f6;
+            --dark-color: #1f2937;
+            --light-color: #f3f4f6;
+            --text-color: #374151;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://source.unsplash.com/1600x900/?fitness,health');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Health Tips Section */
+        .health-tips {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .tip-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* Main Cards Section */
+        .main-cards {
+            padding: 80px 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .main-card:hover {
+            transform: scale(1.05);
+        }
+
+        .main-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .main-card-content {
+            padding: 2rem;
+        }
+
+        .main-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .main-card p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .card-button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .card-button:hover {
+            background: var(--primary-color);
+        }
+
+        /* Dynamic Content Section */
+        .dynamic-content {
+            padding: 60px 0;
+            background: var(--light-color);
+            display: none;
+        }
+
+        .dynamic-content.active {
+            display: block;
+        }
+
+        .exercise-selector {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .exercise-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .exercise-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .exercise-btn:hover, .exercise-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .exercise-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .detail-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-card i {
+            color: var(--primary-color);
+        }
+
+        .exercise-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .exercise-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: var(--light-color);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exercise-list li.completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .timer-btn {
+            padding: 5px 15px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .timer-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .timer-display {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Nutrition Section */
+        .nutrition-content {
+            padding: 60px 0;
+            display: none;
+        }
+
+        .nutrition-content.active {
+            display: block;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .nutrition-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1rem;
+            background: var(--light-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: #e5e7eb;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        /* Products Section */
+        .products-content {
+            padding: 60px 0;
+            background: var(--light-color);
+            display: none;
+        }
+
+        .products-content.active {
+            display: block;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .buy-button {
+            width: 100%;
+            padding: 10px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .buy-button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .exercise-buttons {
+                flex-direction: column;
+            }
+
+            .exercise-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                Max Health
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tips">Health Tips</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Maximize Your Health Journey</h1>
+            <p>Transform your life with personalized fitness plans, nutrition guidance, and premium products</p>
+            <a href="#services" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section class="health-tips" id="tips">
+        <div class="container">
+            <h2 class="section-title">Essential Health Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink at least 8 glasses of water daily to maintain optimal body function</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Quality Sleep</h3>
+                    <p>Get 7-9 hours of quality sleep for better recovery and mental clarity</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Balanced Diet</h3>
+                    <p>Eat a variety of whole foods rich in nutrients and vitamins</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Regular Exercise</h3>
+                    <p>Stay active with at least 30 minutes of exercise daily</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Mental Health</h3>
+                    <p>Practice mindfulness and stress management techniques</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Social Connection</h3>
+                    <p>Maintain strong relationships for emotional well-being</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-cards" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="cards-grid">
+                <div class="main-card" onclick="showExercises()">
+                    <img src="https://source.unsplash.com/400x200/?workout,fitness" alt="Exercise Plans">
+                    <div class="main-card-content">
+                        <h3>Exercise Plans</h3>
+                        <p>Customized workout routines inspired by legends</p>
+                        <button class="card-button">Explore Workouts</button>
+                    </div>
+                </div>
+                <div class="main-card" onclick="showNutrition()">
+                    <img src="https://source.unsplash.com/400x200/?nutrition,healthy-food" alt="Men's Nutrition">
+                    <div class="main-card-content">
+                        <h3>Nutrition for Men</h3>
+                        <p>Tailored nutrition plans for peak performance</p>
+                        <button class="card-button">View Nutrition</button>
+                    </div>
+                </div>
+                <div class="main-card" onclick="showProducts()">
+                    <img src="https://source.unsplash.com/400x200/?supplements,fitness-gear" alt="Products">
+                    <div class="main-card-content">
+                        <h3>Recommended Products</h3>
+                        <p>Premium supplements and fitness equipment</p>
+                        <button class="card-button">Browse Products</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dynamic-content" id="exerciseContent">
+        <div class="container">
+            <div class="exercise-selector">
+                <h2 class="section-title">Choose Your Training Program</h2>
+                <div class="exercise-buttons">
+                    <button class="exercise-btn" onclick="selectExercise('bruce-lee')">Bruce Lee Exercise</button>
+                    <button class="exercise-btn" onclick="selectExercise('andrew-tate')">Andrew Tate Guide</button>
+                    <button class="exercise-btn" onclick="selectExercise('khabib')">Khabib Training</button>
+                    <button class="exercise-btn" onclick="selectExercise('ronaldo')">Ronaldo Fitness</button>
+                    <button class="exercise-btn" onclick="selectExercise('mike-tyson')">Mike Tyson Power</button>
+                    <button class="exercise-btn" onclick="selectExercise('navy-seal')">Navy SEAL Training</button>
+                    <button class="exercise-btn" onclick="selectExercise('lebron')">LeBron Athletics</button>
+                </div>
+            </div>
+            <div id="exerciseDetails" class="exercise-details"></div>
+        </div>
+    </section>
+
+    <section class="nutrition-content" id="nutritionContent">
+        <div class="container">
+            <h2 class="section-title">Nutrition Plans</h2>
+            <div id="nutritionDetails" class="nutrition-grid"></div>
+        </div>
+    </section>
+
+    <section class="products-content" id="productsContent">
+        <div class="container">
+            <h2 class="section-title">Recommended Products</h2>
+            <div id="productsGrid" class="products-grid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#tips">Health Tips</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2024 Max Health. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const exerciseData = {
+            'bruce-lee': {
+                name: 'Bruce Lee',
+                info: 'Master the legendary martial arts training of Bruce Lee, focusing on speed, flexibility, and explosive power.',
+                image: 'https://source.unsplash.com/400x300/?martial-arts',
+                exercises: [
+                    { name: 'Lightning Punches', sets: '5 sets of 100', time: 300 },
+                    { name: 'Dragon Kicks', sets: '4 sets of 50', time: 240 },
+                    { name: 'Core Rotation', sets: '3 sets of 30', time: 180 },
+                    { name: 'Flexibility Training', sets: '20 minutes', time: 1200 },
+                    { name: 'Speed Bag Work', sets: '15 minutes', time: 900 }
+                ],
+                nutrition: {
+                    calories: 2800,
+                    protein: '180g',
+                    meals: ['Lean chicken and rice', 'Green tea', 'Fresh vegetables', 'Fish and quinoa', 'Protein shakes'],
+                    tips: 'Focus on lean proteins and complex carbs for sustained energy'
+                },
+                products: [
+                    { name: 'Wing Chun Dummy', desc: 'Traditional training equipment', image: 'https://source.unsplash.com/250x200/?martial-arts-equipment' },
+                    { name: 'Speed Bag Set', desc: 'Improve hand-eye coordination', image: 'https://source.unsplash.com/250x200/?boxing-bag' },
+                    { name: 'Flexibility Bands', desc: 'Enhance your range of motion', image: 'https://source.unsplash.com/250x200/?resistance-bands' },
+                    { name: 'Protein Powder', desc: 'Fast muscle recovery', image: 'https://source.unsplash.com/250x200/?protein-powder' }
+                ]
+            },
+            'andrew-tate': {
+                name: 'Andrew Tate',
+                info: 'Champion kickboxer training for mental toughness and physical dominance.',
+                image: 'https://source.unsplash.com/400x300/?kickboxing',
+                exercises: [
+                    { name: 'Heavy Bag Work', sets: '10 rounds of 3 min', time: 1800 },
+                    { name: 'Push-ups', sets: '5 sets of 50', time: 300 },
+                    { name: 'Sparring Drills', sets: '5 rounds', time: 900 },
+                    { name: 'Jump Rope', sets: '20 minutes', time: 1200 },
+                    { name: 'Weight Training', sets: '45 minutes', time: 2700 }
+                ],
+                nutrition: {
+                    calories: 3200,
+                    protein: '200g',
+                    meals: ['Steak and eggs', 'Coffee', 'Chicken breast', 'Sweet potatoes', 'Greek yogurt'],
+                    tips: 'High protein intake with strategic carb timing'
+                },
+                products: [
+                    { name: 'Boxing Gloves', desc: 'Professional grade protection', image: 'https://source.unsplash.com/250x200/?boxing-gloves' },
+                    { name: 'Jump Rope', desc: 'Build cardio endurance', image: 'https://source.unsplash.com/250x200/?jump-rope' },
+                    { name: 'Creatine', desc: 'Explosive power supplement', image: 'https://source.unsplash.com/250x200/?supplements' },
+                    { name: 'Heavy Bag', desc: 'Home training essential', image: 'https://source.unsplash.com/250x200/?punching-bag' }
+                ]
+            },
+            'khabib': {
+                name: 'Khabib Nurmagomedov',
+                info: 'Undefeated MMA champion training focusing on wrestling, cardio, and mental discipline.',
+                image: 'https://source.unsplash.com/400x300/?wrestling',
+                exercises: [
+                    { name: 'Wrestling Drills', sets: '60 minutes', time: 3600 },
+                    { name: 'Mountain Running', sets: '5 miles', time: 2400 },
+                    { name: 'Bear Crawls', sets: '5 sets of 100m', time: 600 },
+                    { name: 'Pull-ups', sets: '10 sets of 15', time: 600 },
+                    { name: 'Core Work', sets: '30 minutes', time: 1800 }
+                ],
+                nutrition: {
+                    calories: 3000,
+                    protein: '190g',
+                    meals: ['Lamb and rice', 'Dates and nuts', 'Vegetable soup', 'Grilled fish', 'Herbal tea'],
+                    tips: 'Clean eating with natural, unprocessed foods'
+                },
+                products: [
+                    { name: 'Wrestling Mat', desc: 'Professional training surface', image: 'https://source.unsplash.com/250x200/?gym-mat' },
+                    { name: 'Altitude Mask', desc: 'Simulate high-altitude training', image: 'https://source.unsplash.com/250x200/?training-mask' },
+                    { name: 'Grip Trainers', desc: 'Develop crushing grip strength', image: 'https://source.unsplash.com/250x200/?grip-trainer' },
+                    { name: 'Recovery Foam Roller', desc: 'Essential for muscle recovery', image: 'https://source.unsplash.com/250x200/?foam-roller' }
+                ]
+            },
+            'ronaldo': {
+                name: 'Cristiano Ronaldo',
+                info: 'Elite footballer training for speed, agility, and incredible physique.',
+                image: 'https://source.unsplash.com/400x300/?soccer-training',
+                exercises: [
+                    { name: 'Sprint Intervals', sets: '10 x 100m', time: 600 },
+                    { name: 'Leg Press', sets: '4 sets of 12', time: 480 },
+                    { name: 'Plyometric Jumps', sets: '5 sets of 20', time: 300 },
+                    { name: 'Abs Circuit', sets: '1000 reps total', time: 1800 },
+                    { name: 'Ball Control Drills', sets: '30 minutes', time: 1800 }
+                ],
+                nutrition: {
+                    calories: 3500,
+                    protein: '220g',
+                    meals: ['Grilled chicken salad', 'Fresh fruit', 'Whole grain pasta', 'Fish with vegetables', 'Protein smoothies'],
+                    tips: 'Six small meals throughout the day for sustained energy'
+                },
+                products: [
+                    { name: 'Soccer Ball', desc: 'Professional match ball', image: 'https://source.unsplash.com/250x200/?soccer-ball' },
+                    { name: 'Speed Ladder', desc: 'Agility training tool', image: 'https://source.unsplash.com/250x200/?agility-ladder' },
+                    { name: 'Whey Protein Isolate', desc: 'Lean muscle builder', image: 'https://source.unsplash.com/250x200/?whey-protein' },
+                    { name: 'Compression Gear', desc: 'Recovery and performance', image: 'https://source.unsplash.com/250x200/?compression-clothing' }
+                ]
+            },
+            'mike-tyson': {
+                name: 'Mike Tyson',
+                info: 'Legendary heavyweight boxing training for raw power and intimidating presence.',
+                image: 'https://source.unsplash.com/400x300/?heavyweight-boxing',
+                exercises: [
+                    { name: 'Calisthenics Circuit', sets: '2000 reps daily', time: 3600 },
+                    { name: 'Heavy Bag Power', sets: '12 rounds', time: 2160 },
+                    { name: 'Neck Bridges', sets: '3 sets of 30', time: 450 },
+                    { name: 'Shadowboxing', sets: '30 minutes', time: 1800 },
+                    { name: 'Roadwork', sets: '5 miles at 4am', time: 2400 }
+                ],
+                nutrition: {
+                    calories: 4000,
+                    protein: '250g',
+                    meals: ['Steak and potatoes', 'Oatmeal', 'Chicken and rice', 'Pasta', 'Protein shakes'],
+                    tips: 'High calorie intake to support intense training volume'
+                },
+                products: [
+                    { name: 'Heavy Bag 150lbs', desc: 'Build devastating power', image: 'https://source.unsplash.com/250x200/?heavy-bag' },
+                    { name: 'Neck Harness', desc: 'Strengthen neck muscles', image: 'https://source.unsplash.com/250x200/?neck-training' },
+                    { name: 'Hand Wraps', desc: 'Protect your weapons', image: 'https://source.unsplash.com/250x200/?hand-wraps' },
+                    { name: 'Mass Gainer', desc: 'Support massive calorie needs', image: 'https://source.unsplash.com/250x200/?mass-gainer' }
+                ]
+            },
+            'navy-seal': {
+                name: 'Navy SEAL',
+                info: 'Elite military training for unbreakable mental and physical endurance.',
+                image: 'https://source.unsplash.com/400x300/?military-training',
+                exercises: [
+                    { name: 'Swimming', sets: '2 miles ocean swim', time: 3600 },
+                    { name: 'Push-ups', sets: '10 sets of 50', time: 600 },
+                    { name: 'Running', sets: '4 miles in boots', time: 1800 },
+                    { name: 'Pull-ups', sets: '20-15-10-5 pyramid', time: 600 },
+                    { name: 'Log PT', sets: '45 minutes', time: 2700 }
+                ],
+                nutrition: {
+                    calories: 3800,
+                    protein: '210g',
+                    meals: ['MRE field rations', 'Protein bars', 'Hydration salts', 'Lean meats', 'Complex carbs'],
+                    tips: 'Fuel for sustained operations and recovery'
+                },
+                products: [
+                    { name: 'Tactical Boots', desc: 'All-terrain training footwear', image: 'https://source.unsplash.com/250x200/?military-boots' },
+                    { name: 'Weighted Vest', desc: 'Increase training intensity', image: 'https://source.unsplash.com/250x200/?weighted-vest' },
+                    { name: 'Battle Ropes', desc: 'Full body conditioning', image: 'https://source.unsplash.com/250x200/?battle-ropes' },
+                    { name: 'Electrolyte Mix', desc: 'Extreme hydration support', image: 'https://source.unsplash.com/250x200/?electrolytes' }
+                ]
+            },
+            'lebron': {
+                name: 'LeBron James',
+                info: 'Basketball king training for explosive athleticism and longevity.',
+                image: 'https://source.unsplash.com/400x300/?basketball-training',
+                exercises: [
+                    { name: 'VersaClimber', sets: '30 minutes', time: 1800 },
+                    { name: 'Squats', sets: '5 sets of 8 heavy', time: 600 },
+                    { name: 'Box Jumps', sets: '4 sets of 15', time: 480 },
+                    { name: 'Court Sprints', sets: '20 full-court', time: 1200 },
+                    { name: 'Yoga/Pilates', sets: '45 minutes', time: 2700 }
+                ],
+                nutrition: {
+                    calories: 3700,
+                    protein: '230g',
+                    meals: ['Egg white omelet', 'Salmon salad', 'Chicken and veggies', 'Recovery smoothie', 'Lean steak'],
+                    tips: 'Investment in recovery and longevity nutrition'
+                },
+                products: [
+                    { name: 'Basketball Shoes', desc: 'Elite court performance', image: 'https://source.unsplash.com/250x200/?basketball-shoes' },
+                    { name: 'Resistance Bands Set', desc: 'Versatile strength training', image: 'https://source.unsplash.com/250x200/?resistance-training' },
+                    { name: 'Recovery Boots', desc: 'Compression therapy system', image: 'https://source.unsplash.com/250x200/?recovery-boots' },
+                    { name: 'Collagen Peptides', desc: 'Joint and tissue support', image: 'https://source.unsplash.com/250x200/?collagen-supplement' }
+                ]
+            }
+        };
+
+        let currentExercise = null;
+        let timers = {};
+        let completedExercises = new Set();
+
+        function showExercises() {
+            document.getElementById('exerciseContent').classList.add('active');
+            document.getElementById('nutritionContent').classList.remove('active');
+            document.getElementById('productsContent').classList.remove('active');
+            window.scrollTo({ top: document.getElementById('exerciseContent').offsetTop - 60, behavior: 'smooth' });
+        }
+
+        function showNutrition() {
+            document.getElementById('nutritionContent').classList.add('active');
+            document.getElementById('exerciseContent').classList.remove('active');
+            document.getElementById('productsContent').classList.remove('active');
+            if (currentExercise) {
+                updateNutrition(currentExercise);
+            } else {
+                showGeneralNutrition();
+            }
+            window.scrollTo({ top: document.getElementById('nutritionContent').offsetTop - 60, behavior: 'smooth' });
+        }
+
+        function showProducts() {
+            document.getElementById('productsContent').classList.add('active');
+            document.getElementById('exerciseContent').classList.remove('active');
+            document.getElementById('nutritionContent').classList.remove('active');
+            if (currentExercise) {
+                updateProducts(currentExercise);
+            } else {
+                showGeneralProducts();
+            }
+            window.scrollTo({ top: document.getElementById('productsContent').offsetTop - 60, behavior: 'smooth' });
+        }
+
+        function selectExercise(exerciseId) {
+            currentExercise = exerciseId;
+            completedExercises.clear();
+            
+            document.querySelectorAll('.exercise-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const data = exerciseData[exerciseId];
+            const detailsHtml = `
+                <div class="detail-card">
+                    <h3><i class="fas fa-info-circle"></i> Basic Info</h3>
+                    <img src="${data.image}" alt="${data.name}" style="width: 100%; border-radius: 8px; margin-bottom: 1rem;">
+                    <p>${data.info}</p>
+                </div>
+                <div class="detail-card">
+                    <h3><i class="fas fa-list-check"></i> Training Program</h3>
+                    <ul class="exercise-list" id="exerciseList">
+                        ${data.exercises.map((ex, index) => `
+                            <li id="exercise-${index}">
+                                <div>
+                                    <input type="checkbox" id="check-${index}" onchange="toggleComplete(${index})">
+                                    <span>${ex.name}: ${ex.sets}</span>
+                                </div>
+                                <div class="timer-controls">
+                                    <span class="timer-display" id="timer-${index}">00:00</span>
+                                    <button class="timer-btn" onclick="startTimer(${index}, ${ex.time})">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <button class="timer-btn" onclick="stopTimer(${index})">
+                                        <i class="fas fa-stop"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%">0%</div>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3><i class="fas fa-trophy"></i> Training Tips</h3>
+                    <ul style="padding-left: 20px;">
+                        <li>Warm up thoroughly before starting</li>
+                        <li>Focus on form over speed</li>
+                        <li>Stay hydrated throughout</li>
+                        <li>Rest 1-2 minutes between sets</li>
+                        <li>Track your progress daily</li>
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('exerciseDetails').innerHTML = detailsHtml;
+            updateNutrition(exerciseId);
+            updateProducts(exerciseId);
+        }
+
+        function toggleComplete(index) {
+            const checkbox = document.getElementById(`check-${index}`);
+            const listItem = document.getElementById(`exercise-${index}`);
+            
+            if (checkbox.checked) {
+                completedExercises.add(index);
+                listItem.classList.add('completed');
+            } else {
+                completedExercises.delete(index);
+                listItem.classList.remove('completed');
+            }
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = exerciseData[currentExercise].exercises.length;
+            const completed = completedExercises.size;
+            const percentage = Math.round((completed / total) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                progressBar.style.width = percentage + '%';
+                progressBar.textContent = percentage + '%';
+            }
+        }
+
+        function startTimer(index, duration) {
+            if (timers[index]) {
+                clearInterval(timers[index]);
+            }
+            
+            let timeLeft = duration;
+            const display = document.getElementById(`timer-${index}`);
+            
+            timers[index] = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timers[index]);
+                    display.textContent = 'Complete!';
+                    setTimeout(() => {
+                        display.textContent = '00:00';
+                    }, 2000);
+                }
+                timeLeft--;
+            }, 1000);
+        }
+
+        function stopTimer(index) {
+            if (timers[index]) {
+                clearInterval(timers[index]);
+                document.getElementById(`timer-${index}`).textContent = '00:00';
+            }
+        }
+
+        function updateNutrition(exerciseId) {
+            const data = exerciseData[exerciseId];
+            const nutritionHtml = `
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-fire"></i> Daily Nutrition Plan</h3>
+                    <p><strong>Target Calories:</strong> ${data.nutrition.calories}</p>
+                    <p><strong>Protein Goal:</strong> ${data.nutrition.protein}</p>
+                    <p style="margin-top: 1rem;">${data.nutrition.tips}</p>
+                </div>
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-utensils"></i> Recommended Meals</h3>
+                    <div class="accordion">
+                        ${data.nutrition.meals.map((meal, index) => `
+                            <div class="accordion-item">
+                                <div class="accordion-header" onclick="toggleAccordion(this)">
+                                    <span>Meal ${index + 1}: ${meal}</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Timing: ${index < 2 ? 'Pre-workout' : index < 4 ? 'Post-workout' : 'Recovery'}</p>
+                                    <p>Benefits: Provides essential nutrients for energy and recovery</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-chart-line"></i> Macro Distribution</h3>
+                    <div style="display: flex; justify-content: space-around; margin-top: 1rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-drumstick-bite" style="font-size: 2rem; color: var(--primary-color);"></i>
+                            <p>Protein</p>
+                            <strong>35%</strong>
+                        </div>
+                        <div style="text-align: center;">
+                            <i class="fas fa-bread-slice" style="font-size: 2rem; color: var(--secondary-color);"></i>
+                            <p>Carbs</p>
+                            <strong>45%</strong>
+                        </div>
+                        <div style="text-align: center;">
+                            <i class="fas fa-cheese" style="font-size: 2rem; color: #f59e0b;"></i>
+                            <p>Fats</p>
+                            <strong>20%</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('nutritionDetails').innerHTML = nutritionHtml;
+        }
+
+        function updateProducts(exerciseId) {
+            const data = exerciseData[exerciseId];
+            const productsHtml = data.products.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.desc}</p>
+                        <button class="buy-button" onclick="window.open('https://www.amazon.com/s?k=${encodeURIComponent(product.name)}', '_blank')">
+                            Buy Now <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('productsGrid').innerHTML = productsHtml;
+        }
+
+        function showGeneralNutrition() {
+            const nutritionHtml = `
+                <div class="nutrition-card">
+                    <h3><i class="fas fa-lightbulb"></i> General Nutrition Guidelines</h3>
+                    <p>Select an exercise program to see personalized nutrition recommendations.</p>
+                    <ul style="margin-top: 1rem; padding-left: 20px;">
+                        <li>Eat whole, unprocessed foods</li>
+                        <li>Stay hydrated with 3-4 liters of water daily</li>
+                        <li>Balance your macronutrients</li>
+                        <li>Time your meals around workouts</li>
+                    </ul>
+                </div>
+            `;
+            document.getElementById('nutritionDetails').innerHTML = nutritionHtml;
+        }
+
+        function showGeneralProducts() {
+            const generalProducts = [
+                { name: 'Multivitamin', desc: 'Complete daily nutrition', image: 'https://source.unsplash.com/250x200/?vitamins' },
+                { name: 'Yoga Mat', desc: 'Essential for home workouts', image: 'https://source.unsplash.com/250x200/?yoga-mat' },
+                { name: 'Water Bottle', desc: 'Stay hydrated', image: 'https://source.unsplash.com/250x200/?water-bottle' },
+                { name: 'Fitness Tracker', desc: 'Monitor your progress', image: 'https://source.unsplash.com/250x200/?smartwatch' }
+            ];
+            
+            const productsHtml = generalProducts.map(product => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.desc}</p>
+                        <button class="buy-button" onclick="window.open('https://www.amazon.com/s?k=${encodeURIComponent(product.name)}', '_blank')">
+                            Buy Now <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('productsGrid').innerHTML = productsHtml;
+        }
+
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.accordion-header i').forEach(i => {
+                if (i !== icon) {
+                    i.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            content.classList.toggle('active');
+            icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '20px';
+        });
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            showGeneralNutrition();
+            showGeneralProducts();
+        });
+    </script>
+</body>
+</html>
